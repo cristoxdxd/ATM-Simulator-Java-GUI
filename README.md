@@ -1,7 +1,7 @@
 # Project1-Java-GUI
 Java Application with GUI for a bank ATM simulator
 
-You have to program aN ATM. It must show all the common screens of an ATM. Each run would generate randomly the account balance. It must allow to enter the card password (accept any pin, it will always be correct). 
+You have to program an ATM. It must show all the common screens of an ATM. Each run would generate randomly the account balance. It must allow to enter the card password (accept any pin, it will always be correct). 
 It must allow to do:  
 - **Balance inquiry**
 - **Withdrawal** 
