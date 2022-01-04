@@ -1,14 +1,25 @@
 # Project1-Java-GUI
 Java Application with GUI for a bank ATM simulator
 
-Cada grupo programará un cajero automático. Debe mostrar todas las pantallas habituales de un cajero automático. En cada ejecución generar el saldo de la cuenta aleatoriamente. Permitir ingresar la clave de la tarjeta (aceptar cualquier pin, siempre será correcto). Permitir hacer Consulta de Saldos, Retiros, Transferencias, Recarga Celular. Al final de cada transacción mostrar el saldo que queda en la cuenta. Cuando se trate de Transferencias permitir ingresar cualquier número de cuenta destino y que pueda escoger otros bancos. 
+You have to program aN ATM. It must show all the common screens of an ATM. Each run would generate randomly the account balance. It must allow to enter the card password (accept any pin, it will always be correct). 
+It must allow to do:  
+- **Balance inquiry**
+- **Withdrawal** 
+- **Transfers:** Allow to enter any account number, even between other banks.
+- **Mobile Recahrge**.  
+At the end of any transaction it must show the new account balance.
 
-- El grupo debe programar una aplicación java con entorno gráfico (GUI)  (Swing)
+## Features
 
-- El grupo presentará:
+Program a Java Application with Graphical User Interface (GUI)
 
-a)   Slides si lo considera necesario, para indicar el diseño que hizo de su aplicación: Cuántas clases programó, si hay composición/agregación, usa arreglos, etc.
+## Display
 
-b) Ejecutar el proyecto, verificar que los resultados obtenidos son los esperados.
+1. Slides if neccesary, to show your application design  
+    - How many classes you program?  
+    - Are there composition or added?   
+    - Did you use arrays?
 
-c) Responder preguntas
+2. Run the project. Verify the results are expected.
+
+3. Ask questions.
