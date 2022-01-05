@@ -15,7 +15,7 @@ public class GUI_Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         bankName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        DollarSign = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -48,8 +48,8 @@ public class GUI_Principal extends javax.swing.JFrame {
         jLabel1.setText("Amigo");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design_Images/aad07dccd1fa918b297fad8815f1389e-signo-de-icono-de-signo-de-dolar-de-dinero.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 20, 420, 340));
+        DollarSign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design_Images/aad07dccd1fa918b297fad8815f1389e-signo-de-icono-de-signo-de-dolar-de-dinero.png"))); // NOI18N
+        jPanel1.add(DollarSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 20, 420, 340));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -72,11 +72,12 @@ public class GUI_Principal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 420));
 
-        jPanel2.setBackground(new java.awt.Color(235, 188, 28));
+        jPanel2.setBackground(new java.awt.Color(255, 183, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ConsultasButton.setBackground(new java.awt.Color(235, 162, 40));
         ConsultasButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        ConsultasButton.setForeground(new java.awt.Color(51, 51, 51));
         ConsultasButton.setText("Consultas");
         ConsultasButton.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Design_Images/13927.png"))); // NOI18N
         ConsultasButton.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +89,7 @@ public class GUI_Principal extends javax.swing.JFrame {
 
         TransferenciasButton.setBackground(new java.awt.Color(235, 162, 40));
         TransferenciasButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        TransferenciasButton.setForeground(new java.awt.Color(51, 51, 51));
         TransferenciasButton.setText("Transferencias");
         TransferenciasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +100,7 @@ public class GUI_Principal extends javax.swing.JFrame {
 
         RetirosButton.setBackground(new java.awt.Color(235, 162, 40));
         RetirosButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        RetirosButton.setForeground(new java.awt.Color(51, 51, 51));
         RetirosButton.setText("Retiros");
         RetirosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +111,7 @@ public class GUI_Principal extends javax.swing.JFrame {
 
         RecargasButton.setBackground(new java.awt.Color(235, 162, 40));
         RecargasButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        RecargasButton.setForeground(new java.awt.Color(51, 51, 51));
         RecargasButton.setText("Recargas Mov.");
         RecargasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,21 +172,6 @@ public class GUI_Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -194,12 +183,12 @@ public class GUI_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConsultasButton;
+    private javax.swing.JLabel DollarSign;
     private javax.swing.JButton RecargasButton;
     private javax.swing.JButton RetirosButton;
     private javax.swing.JButton TransferenciasButton;
     private javax.swing.JLabel bankName;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
