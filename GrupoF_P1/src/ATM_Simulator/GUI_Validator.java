@@ -1,5 +1,7 @@
 package ATM_Simulator;
 
+import javax.swing.JOptionPane;
+
 public class GUI_Validator extends javax.swing.JFrame {
 
     public GUI_Validator() {
@@ -31,6 +33,11 @@ public class GUI_Validator extends javax.swing.JFrame {
         PasswordField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         PasswordField.setForeground(new java.awt.Color(204, 255, 255));
         PasswordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
+            }
+        });
         jPanel1.add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 90, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design_Images/2424651.png"))); // NOI18N
@@ -40,6 +47,25 @@ public class GUI_Validator extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        String validator = "";
+        char[] password = PasswordField.getPassword();
+        for(int i = 0; i < password.length; i++){
+            validator += password[i];
+        }
+        boolean matchvalidator = validator.matches("(\\d{4})");
+        if (matchvalidator){
+            this.setVisible(false);
+            GUI_Principal pPrincipal = new GUI_Principal();
+            pPrincipal.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null,
+                    "Invalid password. Try again.",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_PasswordFieldActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
