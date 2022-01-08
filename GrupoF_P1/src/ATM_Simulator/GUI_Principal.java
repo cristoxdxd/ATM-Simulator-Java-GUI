@@ -21,10 +21,10 @@ public class GUI_Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        ConsultasButton = new javax.swing.JButton();
         TransferenciasButton = new javax.swing.JButton();
         RetirosButton = new javax.swing.JButton();
         RecargasButton = new javax.swing.JButton();
+        ConsultarButton = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -75,18 +75,6 @@ public class GUI_Principal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 183, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ConsultasButton.setBackground(new java.awt.Color(235, 162, 40));
-        ConsultasButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        ConsultasButton.setForeground(new java.awt.Color(51, 51, 51));
-        ConsultasButton.setText("Consultas");
-        ConsultasButton.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Design_Images/13927.png"))); // NOI18N
-        ConsultasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultasButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(ConsultasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 170, 50));
-
         TransferenciasButton.setBackground(new java.awt.Color(235, 162, 40));
         TransferenciasButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         TransferenciasButton.setForeground(new java.awt.Color(51, 51, 51));
@@ -120,16 +108,21 @@ public class GUI_Principal extends javax.swing.JFrame {
         });
         jPanel2.add(RecargasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 170, 50));
 
+        ConsultarButton.setBackground(new java.awt.Color(235, 162, 40));
+        ConsultarButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        ConsultarButton.setForeground(new java.awt.Color(51, 51, 51));
+        ConsultarButton.setText("Consultar");
+        ConsultarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultarButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ConsultarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 170, 50));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 900, 180));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TransferenciasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferenciasButtonActionPerformed
-        this.setVisible(false);
-        GUI_Transferencias pTransferencia = new GUI_Transferencias();
-        pTransferencia.setVisible(true);
-    }//GEN-LAST:event_TransferenciasButtonActionPerformed
 
     private void RecargasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecargasButtonActionPerformed
         this.setVisible(false);
@@ -137,17 +130,23 @@ public class GUI_Principal extends javax.swing.JFrame {
         pRecarga.setVisible(true);
     }//GEN-LAST:event_RecargasButtonActionPerformed
 
-    private void ConsultasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultasButtonActionPerformed
-        this.setVisible(false);
-        GUI_Consultar pConsultar = new GUI_Consultar();
-        pConsultar.setVisible(true);
-    }//GEN-LAST:event_ConsultasButtonActionPerformed
-
     private void RetirosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirosButtonActionPerformed
         this.setVisible(false);
         GUI_Retiros pRetiros = new GUI_Retiros();
         pRetiros.setVisible(true);
     }//GEN-LAST:event_RetirosButtonActionPerformed
+
+    private void TransferenciasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferenciasButtonActionPerformed
+        this.setVisible(false);
+        GUI_Transferencias pTransferencia = new GUI_Transferencias();
+        pTransferencia.setVisible(true);
+    }//GEN-LAST:event_TransferenciasButtonActionPerformed
+
+    private void ConsultarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarButtonActionPerformed
+        this.setVisible(false);
+        GUI_Consultar pConsultar = new GUI_Consultar();
+        pConsultar.setVisible(true);
+    }//GEN-LAST:event_ConsultarButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -182,7 +181,7 @@ public class GUI_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConsultasButton;
+    private javax.swing.JButton ConsultarButton;
     private javax.swing.JLabel DollarSign;
     private javax.swing.JButton RecargasButton;
     private javax.swing.JButton RetirosButton;

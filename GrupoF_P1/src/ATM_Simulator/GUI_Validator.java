@@ -54,6 +54,7 @@ public class GUI_Validator extends javax.swing.JFrame {
         for(int i = 0; i < password.length; i++){
             validator += password[i];
         }
+        //System.out.println(validator); // Print the password in the console
         boolean matchvalidator = validator.matches("(\\d{4})");
         if (matchvalidator){
             this.setVisible(false);
