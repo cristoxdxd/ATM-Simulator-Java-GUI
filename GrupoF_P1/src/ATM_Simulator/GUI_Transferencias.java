@@ -1,12 +1,18 @@
 package ATM_Simulator;
 
 import java.awt.Color;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
 
 public class GUI_Transferencias extends javax.swing.JFrame {
+    
+    static double RandomNumbert;
 
-    public GUI_Transferencias() {
+    public GUI_Transferencias(double RandomNumber) {
+        RandomNumbert = RandomNumber;
         initComponents();
         setLocationRelativeTo(null);
+        TransferenceAmount.setText(TransferenceAmount.getText());
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +46,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                 BackButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+        jPanel1.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
 
         BanksLabel.setFont(new java.awt.Font("Roboto Slab", 2, 14)); // NOI18N
         BanksLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -100,7 +106,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
   
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         this.setVisible(false);
-        GUI_Principal pPrincipal = new GUI_Principal();
+        GUI_Principal pPrincipal = new GUI_Principal(RandomNumbert);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
@@ -112,9 +118,25 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         String selectedBeneficiario = BeneficiarioComboBox.getSelectedItem().toString();
         switch(selectedBeneficiario){
             case "Banco Amigo": case "Banco Vecino": case "Banco Lejano": case "Banco Viral":
-                this.setVisible(false);
-                GUI_Resumen pSummary = new GUI_Resumen();
-                pSummary.setVisible(true);
+                try{
+                    double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
+                    if(TransferenceAmountd<RandomNumbert){
+                        double Transaction = RandomNumbert - TransferenceAmountd;
+                        this.setVisible(false);
+                        GUI_Resumen pSummary = new GUI_Resumen(RandomNumbert, Transaction);
+                        pSummary.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null,
+                        "Not enough balance. Try again.",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+                    }
+                }catch(HeadlessException e){
+                    JOptionPane.showMessageDialog(null,
+                        "Error. " + e.getMessage(),
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+                }
             break;
         }
     }//GEN-LAST:event_BeneficiarioComboBoxActionPerformed
@@ -146,7 +168,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Transferencias().setVisible(true);
+                new GUI_Transferencias(RandomNumbert).setVisible(true);
             }
         });
     }

@@ -1,5 +1,6 @@
 package ATM_Simulator;
 
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 public class GUI_Validator extends javax.swing.JFrame {
@@ -49,6 +50,11 @@ public class GUI_Validator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        double min = 100;
+	double max = 1000000;
+	double RandomNumber;
+        double getRandomValue = (double)(Math.random()*(max-min)) + min;
+        RandomNumber = getRandomValue;
         String validator = "";
         char[] password = PasswordField.getPassword();
         for(int i = 0; i < password.length; i++){
@@ -58,14 +64,15 @@ public class GUI_Validator extends javax.swing.JFrame {
         boolean matchvalidator = validator.matches("(\\d{4})");
         if (matchvalidator){
             this.setVisible(false);
-            GUI_Principal pPrincipal = new GUI_Principal();
+            GUI_Principal pPrincipal = new GUI_Principal(RandomNumber);
             pPrincipal.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null,
-                    "Invalid password. Try again.",
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
+                "Invalid password. Try again.",
+                "Error Message",
+                JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_PasswordFieldActionPerformed
 
     public static void main(String args[]) {

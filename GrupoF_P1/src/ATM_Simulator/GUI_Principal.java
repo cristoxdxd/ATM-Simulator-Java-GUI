@@ -1,8 +1,11 @@
 package ATM_Simulator;
 
 public class GUI_Principal extends javax.swing.JFrame {
-
-    public GUI_Principal() {
+    
+    static double RandomNumberP;
+    
+    public GUI_Principal(double RandomNumber) {
+        RandomNumberP = RandomNumber;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -126,7 +129,7 @@ public class GUI_Principal extends javax.swing.JFrame {
 
     private void RecargasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecargasButtonActionPerformed
         this.setVisible(false);
-        GUI_RecargaMovil pRecarga = new GUI_RecargaMovil();
+        GUI_RecargaMovil pRecarga = new GUI_RecargaMovil(RandomNumberP);
         pRecarga.setVisible(true);
     }//GEN-LAST:event_RecargasButtonActionPerformed
 
@@ -138,13 +141,13 @@ public class GUI_Principal extends javax.swing.JFrame {
 
     private void TransferenciasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferenciasButtonActionPerformed
         this.setVisible(false);
-        GUI_Transferencias pTransferencia = new GUI_Transferencias();
+        GUI_Transferencias pTransferencia = new GUI_Transferencias(RandomNumberP);
         pTransferencia.setVisible(true);
     }//GEN-LAST:event_TransferenciasButtonActionPerformed
 
     private void ConsultarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarButtonActionPerformed
         this.setVisible(false);
-        GUI_Consultar pConsultar = new GUI_Consultar();
+        GUI_Consultar pConsultar = new GUI_Consultar(RandomNumberP);
         pConsultar.setVisible(true);
     }//GEN-LAST:event_ConsultarButtonActionPerformed
 
@@ -175,7 +178,7 @@ public class GUI_Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Principal().setVisible(true);
+                new GUI_Principal(RandomNumberP).setVisible(true);
             }
         });
     }
