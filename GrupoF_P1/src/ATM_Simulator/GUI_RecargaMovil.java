@@ -28,7 +28,8 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
         jLabel5 = new javax.swing.JLabel();
         RechargeValue = new javax.swing.JTextField();
         PhoneNumber = new javax.swing.JTextField();
-        Finalizar = new javax.swing.JButton();
+        RechargeButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,12 +47,12 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Moviles");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 232, 224, 124));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 224, 124));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Recargas ");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 102, 293, 124));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 293, 124));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 580, 480));
 
@@ -62,12 +63,12 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
         jLabel4.setFont(new java.awt.Font("Roboto Medium", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Ingrese el valor de la recarga");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 333, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 333, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto Medium", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Ingrese el numero de celular ");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 313, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 313, -1));
 
         RechargeValue.setBackground(new java.awt.Color(235, 177, 42));
         RechargeValue.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -87,7 +88,7 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
                 RechargeValueKeyTyped(evt);
             }
         });
-        jPanel3.add(RechargeValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 237, 39));
+        jPanel3.add(RechargeValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 237, 39));
 
         PhoneNumber.setBackground(new java.awt.Color(235, 177, 42));
         PhoneNumber.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -107,26 +108,31 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
                 PhoneNumberKeyTyped(evt);
             }
         });
-        jPanel3.add(PhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 237, 39));
+        jPanel3.add(PhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 237, 39));
 
-        Finalizar.setBackground(new java.awt.Color(235, 162, 40));
-        Finalizar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        Finalizar.setForeground(new java.awt.Color(51, 51, 51));
-        Finalizar.setText("Pagar");
-        Finalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Finalizar.addMouseListener(new java.awt.event.MouseAdapter() {
+        RechargeButton.setBackground(new java.awt.Color(235, 162, 40));
+        RechargeButton.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        RechargeButton.setForeground(new java.awt.Color(51, 51, 51));
+        RechargeButton.setText("Recargar");
+        RechargeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        RechargeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FinalizarMouseClicked(evt);
+                RechargeButtonMouseClicked(evt);
             }
         });
-        Finalizar.addActionListener(new java.awt.event.ActionListener() {
+        RechargeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FinalizarActionPerformed(evt);
+                RechargeButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(Finalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 349, 120, -1));
+        jPanel3.add(RechargeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 190, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 390, 480));
+        jLabel6.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("Solo números nacionales (09********)");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 340, 480));
 
         BackButton.setBackground(new java.awt.Color(235, 162, 40));
         BackButton.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
@@ -150,7 +156,9 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,8 +176,8 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
     }//GEN-LAST:event_PhoneNumberMousePressed
     private void RechargeValueMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RechargeValueMousePressed
     }//GEN-LAST:event_RechargeValueMousePressed
-    private void FinalizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FinalizarMouseClicked
-    }//GEN-LAST:event_FinalizarMouseClicked
+    private void RechargeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RechargeButtonMouseClicked
+    }//GEN-LAST:event_RechargeButtonMouseClicked
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
     }//GEN-LAST:event_BackButtonMouseClicked
 
@@ -185,7 +193,7 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
     private void RechargeValueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RechargeValueKeyTyped
     }//GEN-LAST:event_RechargeValueKeyTyped
 
-    private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
+    private void RechargeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechargeButtonActionPerformed
         String validator = PhoneNumber.getText();
         boolean matchPhonevalidator = validator.matches("(09\\d{8})");
         if (matchPhonevalidator){
@@ -214,7 +222,7 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
                 "Error Message",
                 JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_FinalizarActionPerformed
+    }//GEN-LAST:event_RechargeButtonActionPerformed
 
         public static void main(String args[]) {
             java.awt.EventQueue.invokeLater(new Runnable() {
@@ -226,14 +234,15 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
-    private javax.swing.JButton Finalizar;
     private javax.swing.JTextField PhoneNumber;
+    private javax.swing.JButton RechargeButton;
     private javax.swing.JTextField RechargeValue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

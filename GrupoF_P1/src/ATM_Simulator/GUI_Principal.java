@@ -135,7 +135,7 @@ public class GUI_Principal extends javax.swing.JFrame {
 
     private void RetirosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirosButtonActionPerformed
         this.setVisible(false);
-        GUI_Retiros pRetiros = new GUI_Retiros();
+        GUI_Retiros pRetiros = new GUI_Retiros(RandomNumberP);
         pRetiros.setVisible(true);
     }//GEN-LAST:event_RetirosButtonActionPerformed
 
