@@ -1,25 +1,38 @@
-# Project1-Java-GUI
+# My first GUI (Java)
 Java Application with GUI for a bank ATM simulator
-
-You have to program an ATM. It must show all the common screens of an ATM. Each run would generate randomly the account balance. It must allow to enter the card password (accept any pin, it will always be correct). 
-It must allow to do:  
-- **Balance inquiry**
-- **Withdrawal** 
-- **Transfers:** Allow to enter any account number, even between other banks.
-- **Mobile Recahrge**.  
-At the end of any transaction it must show the new account balance.
 
 ## Features
 
-Program a Java Application with Graphical User Interface (GUI)
+* ATM simulator without database
+* Java Application Program with Graphical User Interface (GUI)
+* Password Validator (only allows 4 _**digits**_)
+* Generate a random balance number every sesion
+- **Balance inquiry**
+- **Withdrawal** 
+- **Transfers**
+- **Mobile Recahrge**.
+* Transaction options:
+    * Balance Summary
+    * Correct
+    * Confirm and return to principal menu.
+    * Confirm and exit your sesion.
+*  Final timer to create a new ATM sesion (loop)
 
 ## Display
 
-1. Slides if neccesary, to show your application design  
-    - How many classes you program?  
-    - Are there composition or added?   
-    - Did you use arrays?
 
-2. Run the project. Verify the results are expected.
+## Getting Started
 
-3. Ask questions.
+1. Download the project from the download section (.zip) or clone this project by typing in the bash the following command:  
+
+    **HTTPS:**  
+    ```
+    git clone https://github.com/cristoxdxd/Project1-Java-GUI.git
+    ```
+       
+2. Import it in NetBeans IDE or any other Java IDE.
+3. Compile and run the application.
+
+## License
+
+This project is licensed under the GNU General Public License v2.0 - see the [LICENSE.md](LICENSE.md) file for details.
