@@ -87,6 +87,11 @@ public class GUI_Retiros extends javax.swing.JFrame {
         BackButton.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
         BackButton.setForeground(new java.awt.Color(51, 51, 51));
         BackButton.setText("Regresar");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
         jPanel3.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 900, 120));
@@ -121,6 +126,12 @@ public class GUI_Retiros extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }    
     }//GEN-LAST:event_WithdrawButtonActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        this.setVisible(false);
+        GUI_Principal pPrincipal = new GUI_Principal(RandomNumberR);
+        pPrincipal.setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

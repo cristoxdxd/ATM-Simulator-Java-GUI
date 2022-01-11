@@ -128,7 +128,6 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         TransferenceAccount.setFont(new java.awt.Font("Roboto Thin", 1, 24)); // NOI18N
         TransferenceAccount.setForeground(new java.awt.Color(51, 51, 51));
         TransferenceAccount.setRows(1);
-        TransferenceAccount.setText("1234567891");
         TransferenceAccount.setToolTipText("");
         TransferenceAccount.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         TransferenceAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
