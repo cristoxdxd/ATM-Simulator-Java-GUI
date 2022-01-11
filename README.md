@@ -19,6 +19,8 @@ Java Application with GUI for a bank ATM simulator
 *  Final timer to create a new ATM sesion (loop)
 
 ## Display
+Running example  
+![Java_GUI](https://user-images.githubusercontent.com/82126489/148879787-f284cbbb-8ef7-40d5-9b9a-1524293ab4d4.gif)
 
 
 ## Getting Started
