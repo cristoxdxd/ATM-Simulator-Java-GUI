@@ -35,6 +35,12 @@ Running example
 2. Import it in NetBeans IDE or any other Java IDE.
 3. Compile and run the application.
 
+## Authors
+· [Cristopher Herrera](https://www.github.com/cristoxdxd)  
+· [Mattew Guerrero](https://www.github.com/Mattewg)  
+· [Italo Zambrano](https://www.github.com/antonioxzz)  
+· [Dilan Obando](https://www.github.com/Dilanbkr7)  
+
 ## License
 
-This project is licensed under the GNU General Public License v2.0 - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the GNU General Public License v2.0 - see the [LICENSE](LICENSE) file for details.
