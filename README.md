@@ -39,7 +39,6 @@ Running example
 · [Cristopher Herrera](https://www.github.com/cristoxdxd)  
 · [Mattew Guerrero](https://www.github.com/Mattewg)  
 · [Italo Zambrano](https://www.github.com/antonioxzz)  
-· [Dilan Obando](https://www.github.com/Dilanbkr7)  
 
 ## License
 
