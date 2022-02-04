@@ -1,12 +1,12 @@
-# My first GUI (Java)
+# ATM Simulator
 Java Application with GUI for a bank ATM simulator
 
 ## Features
 
-* ATM simulator without database
+* ATM simulator
 * Java Application Program with Graphical User Interface (GUI)
-* Password Validator (only allows 4 _**digits**_)
-* Generate a random balance number every sesion
+* Password Validator (only allows 4 _**digits**_) 
+* Get current balance from a text data
 - **Balance inquiry**
 - **Withdrawal** 
 - **Transfers**
@@ -17,11 +17,6 @@ Java Application with GUI for a bank ATM simulator
     * Confirm and return to principal menu.
     * Confirm and exit your sesion.
 *  Final timer to create a new ATM sesion (loop)
-
-## Display
-Running example  
-![Java_GUI](https://user-images.githubusercontent.com/82126489/148879787-f284cbbb-8ef7-40d5-9b9a-1524293ab4d4.gif)
-
 
 ## Getting Started
 
@@ -34,11 +29,6 @@ Running example
        
 2. Import it in NetBeans IDE or any other Java IDE.
 3. Compile and run the application.
-
-## Authors
-· [Cristopher Herrera](https://www.github.com/cristoxdxd)  
-· [Mattew Guerrero](https://www.github.com/Mattewg)  
-· [Italo Zambrano](https://www.github.com/antonioxzz)  
 
 ## License
 
