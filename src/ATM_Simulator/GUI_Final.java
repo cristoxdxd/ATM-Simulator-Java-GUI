@@ -11,7 +11,7 @@ public class GUI_Final extends javax.swing.JFrame{
         Timer timer = new Timer();
     
         timer.scheduleAtFixedRate(new TimerTask() {
-            int i = 3;
+            int i = 2;
             public void run() {
                 i--;
                 if (i < 0) {

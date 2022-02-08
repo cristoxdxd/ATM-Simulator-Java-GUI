@@ -131,8 +131,8 @@ public class GUI_Resumen extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        GUI_Final pPrincipal = new GUI_Final();
-        pPrincipal.setVisible(true);
+        GUI_Final pFinal = new GUI_Final();
+        pFinal.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void CorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrectButtonActionPerformed

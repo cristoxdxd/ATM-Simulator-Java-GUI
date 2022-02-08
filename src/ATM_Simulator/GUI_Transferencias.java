@@ -165,7 +165,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
     private void BeneficiarioComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeneficiarioComboBoxActionPerformed
         String selectedBeneficiario = BeneficiarioComboBox.getSelectedItem().toString();
         switch(selectedBeneficiario){
-            case "Banco Amigo": case "Banco Vecino": case "Banco Lejano": case "Banco Viral":
+            case "Banco Amigo": 
                 try{
                     String validator = TransferenceAccount.getText();
                     boolean matchvalidator = validator.matches("(\\d{10})");
@@ -173,6 +173,36 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                         double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
                         if(TransferenceAmountd<RandomNumbert){
                             double Transaction = RandomNumbert - TransferenceAmountd;
+                            this.setVisible(false);
+                            GUI_Resumen pSummary = new GUI_Resumen(RandomNumbert, Transaction);
+                            pSummary.setVisible(true);
+                        }else{
+                            JOptionPane.showMessageDialog(null,
+                                "Not enough balance. Try again.",
+                                "Error Message",
+                                JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,
+                            "Not valid account. Try again.",
+                            "Error Message",
+                            JOptionPane.ERROR_MESSAGE);
+                    }
+                }catch(HeadlessException e){
+                    JOptionPane.showMessageDialog(null,
+                        "Error. " + e.getMessage(),
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+            break;
+            case "Banco Vecino": case "Banco Lejano": case "Banco Viral":
+                try{
+                    String validator = TransferenceAccount.getText();
+                    boolean matchvalidator = validator.matches("(\\d{10})");
+                    if(matchvalidator){
+                        double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
+                        if(TransferenceAmountd+0.4<RandomNumbert){
+                            double Transaction = RandomNumbert - TransferenceAmountd - 0.4;
                             this.setVisible(false);
                             GUI_Resumen pSummary = new GUI_Resumen(RandomNumbert, Transaction);
                             pSummary.setVisible(true);

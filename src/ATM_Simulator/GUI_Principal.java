@@ -28,6 +28,7 @@ public class GUI_Principal extends javax.swing.JFrame {
         RetirosButton = new javax.swing.JButton();
         RecargasButton = new javax.swing.JButton();
         ConsultarButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -122,6 +123,9 @@ public class GUI_Principal extends javax.swing.JFrame {
         });
         jPanel2.add(ConsultarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 170, 50));
 
+        jButton1.setText("jButton1");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 900, 180));
 
         pack();
@@ -190,6 +194,7 @@ public class GUI_Principal extends javax.swing.JFrame {
     private javax.swing.JButton RetirosButton;
     private javax.swing.JButton TransferenciasButton;
     private javax.swing.JLabel bankName;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

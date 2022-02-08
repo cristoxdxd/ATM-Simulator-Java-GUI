@@ -108,7 +108,7 @@ public class GUI_Retiros extends javax.swing.JFrame {
     private void WithdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WithdrawButtonActionPerformed
          try{
             double TransferenceAmounti = Integer.parseInt(WithdrawAmount.getText());
-            if(TransferenceAmounti < 500){
+            if(TransferenceAmounti < 501){
                 double Transaction = RandomNumberR - TransferenceAmounti;
                 this.setVisible(false);
                 GUI_Resumen pSummary = new GUI_Resumen(RandomNumberR, Transaction);
