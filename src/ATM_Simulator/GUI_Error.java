@@ -30,6 +30,8 @@ public class GUI_Error extends javax.swing.JFrame {
                 }
             }
         }, 0, 1000);
+        this.setVisible(false);
+
     }
 
     public GUI_Error(int index, String e) {
@@ -53,6 +55,7 @@ public class GUI_Error extends javax.swing.JFrame {
                 }
             }
         }, 0, 1000);
+        this.setVisible(false);
     }
     
     public GUI_Error(String e, int number) {
@@ -76,6 +79,8 @@ public class GUI_Error extends javax.swing.JFrame {
                 }
             }
         }, 0, 1000);
+        this.setVisible(false);
+
     }
     
     /**

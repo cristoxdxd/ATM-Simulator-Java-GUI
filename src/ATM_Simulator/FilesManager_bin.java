@@ -89,23 +89,23 @@ public class FilesManager_bin {
         return clients;
     }
     
-    public static void findinFile(String search, String FileRoute){
+    public static boolean findinFile(String search, String FileRoute){
+        boolean validator = false;
         FileInputStream fis;
         ObjectInputStream fileIn;
         int counter = 0;
         try{
             fis= new FileInputStream(FileRoute);
             fileIn = new ObjectInputStream(fis);
-            Object object;
-            System.out.printf("%-6s%-12s%-40s%-20s%-30s%-20s",
-                    "Nro.","CardCode","Fullname", "Password", "Balance", "Birthday");
+            Clients object;
             do{
-                object = fileIn.readObject();
+                object = (Clients)fileIn.readObject();
                 if (object != null){
-                    Clients client =(Clients)object;
-                    if (client.find(search)){
-                        System.out.println(client.formatRegister(counter+1));
-                        counter++;
+                    validator = object.find(search);
+                    if(validator){
+                        /*System.out.println(object.formatRegister(counter+1));
+                        counter++;*/
+                        return validator;
                     }
                 }
             }while(object != null);
@@ -116,6 +116,7 @@ public class FilesManager_bin {
         }catch(ClassNotFoundException e){
             System.out.println("ClassNotFound: " + e.getMessage());
         }
+        return validator;
     }
     
     public static int getIndex(String search, String FileRoute){

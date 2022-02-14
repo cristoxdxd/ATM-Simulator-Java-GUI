@@ -143,7 +143,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Verifique ingresar los 10 digitos");
+        jLabel7.setText("Verifique ingresar los 6 digitos");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 600));
@@ -168,18 +168,28 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         switch(selectedBeneficiario){
             case "Banco Amigo": 
                 try{
+                    
                     String validator = TransferenceAccount.getText();
-                    boolean matchvalidator = validator.matches("(\\d{10})");
+                    boolean matchvalidator = validator.matches("(\\d{6})");
                     if(matchvalidator){
-                        double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
-                        if(TransferenceAmountd < currentBalance){
-                            double Transaction = currentBalance - TransferenceAmountd;
-                            this.setVisible(false);
-                            GUI_Resumen pSummary = new GUI_Resumen(indexT,Transaction);
-                            pSummary.setVisible(true);
+                        if(FilesManager_bin.findinFile(validator, FileRoute)){
+                            int indexTransfer = FilesManager_bin.getIndex(validator, FileRoute);
+                            double currentBalance2 = (clients.get(indexTransfer)).getBalance();
+                            double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
+                            if(TransferenceAmountd < currentBalance){
+                                double Transaction = currentBalance - TransferenceAmountd;
+                                double Transaction2 = currentBalance2 + TransferenceAmountd;
+                                this.setVisible(false);
+                                GUI_ResumenTransferencia pSummary = new GUI_ResumenTransferencia(indexT,Transaction,indexTransfer,Transaction2);
+                                pSummary.setVisible(true);
+                            }else{
+                                this.setVisible(false);
+                                GUI_Error pError = new GUI_Error(indexT,"Not enough balance. Try again.");
+                                pError.setVisible(true);
+                            }
                         }else{
                             this.setVisible(false);
-                            GUI_Error pError = new GUI_Error(indexT,"Not enough balance. Try again.");
+                            GUI_Error pError = new GUI_Error(indexT,"Number account doesn't exist.");
                             pError.setVisible(true);
                         }
                     }else{
@@ -196,9 +206,10 @@ public class GUI_Transferencias extends javax.swing.JFrame {
             case "Banco Vecino": case "Banco Lejano": case "Banco Viral":
                 try{
                     String validator = TransferenceAccount.getText();
-                    boolean matchvalidator = validator.matches("(\\d{10})");
+                    boolean matchvalidator = validator.matches("(\\d{6})");
                     if(matchvalidator){
                         double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
+
                         if(TransferenceAmountd + 0.4 < currentBalance){
                             double Transaction = currentBalance - TransferenceAmountd - 0.4;
                             this.setVisible(false);

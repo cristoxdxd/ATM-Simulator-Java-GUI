@@ -21,6 +21,7 @@ public class GUI_Final extends javax.swing.JFrame{
                 }
             }
         }, 0, 1000);
+        this.setVisible(false);
     } 
 
     @SuppressWarnings("unchecked")

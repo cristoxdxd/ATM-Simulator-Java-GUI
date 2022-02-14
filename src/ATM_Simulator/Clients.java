@@ -47,7 +47,8 @@ public class Clients implements Serializable{
     
     public boolean find(String search){
         boolean validator = false;
-        if(CardCode.contains(search) || FullName.contains(search) || birthday.contains(search)){
+        String encodedSearch = encoderString(search);
+        if(encodedSearch.equals(this.CardCode)){
             validator = true;
         }
         return validator;
