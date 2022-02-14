@@ -1,18 +1,23 @@
 package ATM_Simulator;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class GUI_Resumen extends javax.swing.JFrame {
     
-    static double RandomNumberr, Transactionr;
+    final String FileRoute = "ClientsBinary.data";
+    ArrayList<Clients> clients = FilesManager_bin.showListedFile(FileRoute);
+    static int indexS;
+    static double currentBalance, Transactionr;
     
-    public GUI_Resumen(double RandomNumber, double Transaction) {
-        RandomNumberr = RandomNumber;
+    public GUI_Resumen(int index,double Transaction) {
+        indexS = index;
+        currentBalance = (clients.get(indexS)).getBalance();
         Transactionr = Transaction;
         initComponents();
         setLocationRelativeTo(null);
         DecimalFormat showFormat = new DecimalFormat("#.00");
-        showLastBalance.setText(showFormat.format(RandomNumberr));
+        showLastBalance.setText(showFormat.format(currentBalance));
         showLastBalance.show(true);
         showCurrentBalance.setText(showFormat.format(Transactionr));
         showCurrentBalance.show(true);
@@ -123,13 +128,20 @@ public class GUI_Resumen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        (clients.get(indexS)).setBalance(Transactionr);
+        Object[] modifiedBalance = clients.toArray();
+        FilesManager_bin.addRegisters(modifiedBalance, FileRoute);
+        
         this.setVisible(false);
-        RandomNumberr = Transactionr;
-        GUI_Principal pPrincipal = new GUI_Principal(RandomNumberr);
+        GUI_Principal pPrincipal = new GUI_Principal(indexS);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        (clients.get(indexS)).setBalance(Transactionr);
+        Object[] modifiedBalance = clients.toArray();
+        FilesManager_bin.addRegisters(modifiedBalance, FileRoute);
+        
         this.setVisible(false);
         GUI_Final pFinal = new GUI_Final();
         pFinal.setVisible(true);
@@ -137,7 +149,7 @@ public class GUI_Resumen extends javax.swing.JFrame {
 
     private void CorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrectButtonActionPerformed
         this.setVisible(false);
-        GUI_Principal pPrincipal = new GUI_Principal(RandomNumberr);
+        GUI_Principal pPrincipal = new GUI_Principal(indexS);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_CorrectButtonActionPerformed
 
@@ -169,7 +181,7 @@ public class GUI_Resumen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Resumen(RandomNumberr, Transactionr).setVisible(true);
+                new GUI_Resumen(indexS,Transactionr).setVisible(true);
             }
         });
     }

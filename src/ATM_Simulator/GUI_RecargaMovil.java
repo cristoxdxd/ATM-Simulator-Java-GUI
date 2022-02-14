@@ -1,15 +1,16 @@
 package ATM_Simulator;
 
-import java.awt.Color;
 import java.awt.HeadlessException;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class GUI_RecargaMovil extends javax.swing.JFrame{
-    
-    static double RandomNumberRM;
-
-    public GUI_RecargaMovil(double RandomNumber){
-        RandomNumberRM = RandomNumber;
+    final String FileRoute = "ClientsBinary.data";
+    ArrayList<Clients> clients = FilesManager_bin.showListedFile(FileRoute);
+    static int indexRM;
+    static double currentBalance;
+    public GUI_RecargaMovil(int index){
+        indexRM = index;
+        currentBalance = (clients.get(indexRM)).getBalance();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -30,6 +31,8 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
         PhoneNumber = new javax.swing.JTextField();
         RechargeButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        OperadoraComboBox = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,13 +65,13 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
 
         jLabel4.setFont(new java.awt.Font("Roboto Medium", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Ingrese el valor de la recarga");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 333, -1));
+        jLabel4.setText("Ingrese la operadora");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 333, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto Medium", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Ingrese el numero de celular ");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 313, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 313, -1));
 
         RechargeValue.setBackground(new java.awt.Color(235, 177, 42));
         RechargeValue.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -88,7 +91,7 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
                 RechargeValueKeyTyped(evt);
             }
         });
-        jPanel3.add(RechargeValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 237, 39));
+        jPanel3.add(RechargeValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 237, 39));
 
         PhoneNumber.setBackground(new java.awt.Color(235, 177, 42));
         PhoneNumber.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -125,12 +128,34 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
                 RechargeButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(RechargeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 190, -1));
+        jPanel3.add(RechargeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 190, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Solo números nacionales (09********)");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+
+        OperadoraComboBox.setBackground(new java.awt.Color(235, 162, 40));
+        OperadoraComboBox.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        OperadoraComboBox.setForeground(new java.awt.Color(51, 51, 51));
+        OperadoraComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movistar", "Claro", "CNT", "Tuenti" }));
+        OperadoraComboBox.setSelectedItem(null);
+        OperadoraComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OperadoraComboBoxItemStateChanged(evt);
+            }
+        });
+        OperadoraComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OperadoraComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel3.add(OperadoraComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 190, -1));
+
+        jLabel7.setFont(new java.awt.Font("Roboto Medium", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("Ingrese el valor de la recarga");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 333, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 340, 480));
 
@@ -183,7 +208,7 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         this.setVisible(false);
-        GUI_Principal pPrincipal = new GUI_Principal(RandomNumberRM);
+        GUI_Principal pPrincipal = new GUI_Principal(indexRM);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
@@ -199,41 +224,45 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
         if (matchPhonevalidator){
             try{
                 double TransferenceAmountd = Double.parseDouble(RechargeValue.getText());
-                if(TransferenceAmountd < RandomNumberRM){
-                    double Transaction = RandomNumberRM - TransferenceAmountd;
+                if(TransferenceAmountd < currentBalance){
+                    double Transaction = currentBalance - TransferenceAmountd;
                     this.setVisible(false);
-                    GUI_Resumen pSummary = new GUI_Resumen(RandomNumberRM, Transaction);
+                    GUI_Resumen pSummary = new GUI_Resumen(indexRM, Transaction);
                     pSummary.setVisible(true);
                 }else{
-                    JOptionPane.showMessageDialog(null,
-                        "Not enough balance. Try again.",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
+                    this.setVisible(false);
+                    GUI_Error pError = new GUI_Error(indexRM, "Not enough balance. Try again.");
+                    pError.setVisible(true);
                 }
             }catch(HeadlessException e){
-                JOptionPane.showMessageDialog(null,
-                    "Error. " + e.getMessage(),
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
+                this.setVisible(false);
+                GUI_Error pError = new GUI_Error(indexRM, e);
+                pError.setVisible(true);
             }
         }else{
-            JOptionPane.showMessageDialog(null,
-                "Invalid data. Try again.",
-                "Error Message",
-                JOptionPane.ERROR_MESSAGE);
+            this.setVisible(false);
+            GUI_Error pError = new GUI_Error(indexRM, "Invalid data. Try again.");
+            pError.setVisible(true);
         }
     }//GEN-LAST:event_RechargeButtonActionPerformed
+
+    private void OperadoraComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OperadoraComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OperadoraComboBoxItemStateChanged
+
+    private void OperadoraComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OperadoraComboBoxActionPerformed
+    }//GEN-LAST:event_OperadoraComboBoxActionPerformed
 
         public static void main(String args[]) {
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_RecargaMovil(RandomNumberRM).setVisible(true);
+                new GUI_RecargaMovil(indexRM).setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JComboBox<String> OperadoraComboBox;
     private javax.swing.JTextField PhoneNumber;
     private javax.swing.JButton RechargeButton;
     private javax.swing.JTextField RechargeValue;
@@ -243,6 +272,7 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

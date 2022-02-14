@@ -1,19 +1,25 @@
 package ATM_Simulator;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class GUI_Consultar extends javax.swing.JFrame {
     
-    static double RandomNumberc;
+    final String FileRoute = "ClientsBinary.data";
+    ArrayList<Clients> clients = FilesManager_bin.showListedFile(FileRoute);
+    static int indexC;
+    static double currentBalance;
 
-    public GUI_Consultar(double RandomNumber) {
-        RandomNumberc = RandomNumber;
+    public GUI_Consultar(int index) {
+        indexC = index;
+        currentBalance = (clients.get(indexC)).getBalance();
         initComponents();
         setLocationRelativeTo(null);
         //System.out.println(RandomNumberc);
         DecimalFormat showFormat = new DecimalFormat("#.00");
-        BalanceLabel.setText(showFormat.format(RandomNumberc));
-        BalanceLabel.show(true);
+        InformationTextArea.setText((clients.get(indexC)).getFullName() + "\n");
+        InformationTextArea.append("Saldo actual: " + showFormat.format(currentBalance));
+        InformationTextArea.show(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -26,9 +32,9 @@ public class GUI_Consultar extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        BalanceLabel = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        InformationTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,30 +68,6 @@ public class GUI_Consultar extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 600));
 
-        jScrollPane2.setBackground(new java.awt.Color(255, 153, 0));
-        jScrollPane2.setBorder(null);
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        BalanceLabel.setEditable(false);
-        BalanceLabel.setBackground(new java.awt.Color(235, 162, 40));
-        BalanceLabel.setColumns(10);
-        BalanceLabel.setFont(new java.awt.Font("Roboto Black", 1, 36)); // NOI18N
-        BalanceLabel.setForeground(new java.awt.Color(51, 51, 51));
-        BalanceLabel.setRows(1);
-        BalanceLabel.setAutoscrolls(false);
-        BalanceLabel.setBorder(null);
-        BalanceLabel.setCaretColor(new java.awt.Color(235, 162, 40));
-        BalanceLabel.setVerifyInputWhenFocusTarget(false);
-        BalanceLabel.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                BalanceLabelComponentShown(evt);
-            }
-        });
-        jScrollPane2.setViewportView(BalanceLabel);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 220, -1));
-
         jButton1.setBackground(new java.awt.Color(235, 162, 40));
         jButton1.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
@@ -97,6 +79,21 @@ public class GUI_Consultar extends javax.swing.JFrame {
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 550, -1, -1));
 
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        InformationTextArea.setEditable(false);
+        InformationTextArea.setBackground(new java.awt.Color(235, 162, 40));
+        InformationTextArea.setColumns(30);
+        InformationTextArea.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        InformationTextArea.setForeground(new java.awt.Color(51, 51, 51));
+        InformationTextArea.setRows(4);
+        jScrollPane1.setViewportView(InformationTextArea);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 330, 50));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
@@ -106,13 +103,9 @@ public class GUI_Consultar extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         this.setVisible(false);
-        GUI_Principal pPrincipal = new GUI_Principal(RandomNumberc);
+        GUI_Principal pPrincipal = new GUI_Principal(indexC);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
-
-    private void BalanceLabelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_BalanceLabelComponentShown
-        
-    }//GEN-LAST:event_BalanceLabelComponentShown
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
@@ -147,20 +140,20 @@ public class GUI_Consultar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Consultar(RandomNumberc).setVisible(true);
+                new GUI_Consultar(indexC).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
-    private javax.swing.JTextArea BalanceLabel;
+    private javax.swing.JTextArea InformationTextArea;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

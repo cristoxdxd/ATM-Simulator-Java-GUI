@@ -1,15 +1,16 @@
 package ATM_Simulator;
 
-import java.awt.Color;
 import java.awt.HeadlessException;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class GUI_Transferencias extends javax.swing.JFrame {
-    
-    static double RandomNumbert;
-
-    public GUI_Transferencias(double RandomNumber) {
-        RandomNumbert = RandomNumber;
+    final String FileRoute = "ClientsBinary.data";
+    ArrayList<Clients> clients = FilesManager_bin.showListedFile(FileRoute);
+    static int indexT;
+    static double currentBalance;
+    public GUI_Transferencias(int index) {
+        indexT = index;
+        currentBalance = (clients.get(indexT)).getBalance();
         initComponents();
         setLocationRelativeTo(null);
         TransferenceAmount.setText(TransferenceAmount.getText());
@@ -154,7 +155,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
   
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         this.setVisible(false);
-        GUI_Principal pPrincipal = new GUI_Principal(RandomNumbert);
+        GUI_Principal pPrincipal = new GUI_Principal(indexT);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
@@ -171,28 +172,25 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                     boolean matchvalidator = validator.matches("(\\d{10})");
                     if(matchvalidator){
                         double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
-                        if(TransferenceAmountd<RandomNumbert){
-                            double Transaction = RandomNumbert - TransferenceAmountd;
+                        if(TransferenceAmountd < currentBalance){
+                            double Transaction = currentBalance - TransferenceAmountd;
                             this.setVisible(false);
-                            GUI_Resumen pSummary = new GUI_Resumen(RandomNumbert, Transaction);
+                            GUI_Resumen pSummary = new GUI_Resumen(indexT,Transaction);
                             pSummary.setVisible(true);
                         }else{
-                            JOptionPane.showMessageDialog(null,
-                                "Not enough balance. Try again.",
-                                "Error Message",
-                                JOptionPane.ERROR_MESSAGE);
+                            this.setVisible(false);
+                            GUI_Error pError = new GUI_Error(indexT,"Not enough balance. Try again.");
+                            pError.setVisible(true);
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null,
-                            "Not valid account. Try again.",
-                            "Error Message",
-                            JOptionPane.ERROR_MESSAGE);
+                        this.setVisible(false);
+                        GUI_Error pError = new GUI_Error(indexT,"Not valid account. Try again.");
+                        pError.setVisible(true);
                     }
                 }catch(HeadlessException e){
-                    JOptionPane.showMessageDialog(null,
-                        "Error. " + e.getMessage(),
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
+                    this.setVisible(false);
+                    GUI_Error pError = new GUI_Error(indexT,e);
+                    pError.setVisible(true);
                 }
             break;
             case "Banco Vecino": case "Banco Lejano": case "Banco Viral":
@@ -201,28 +199,25 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                     boolean matchvalidator = validator.matches("(\\d{10})");
                     if(matchvalidator){
                         double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
-                        if(TransferenceAmountd+0.4<RandomNumbert){
-                            double Transaction = RandomNumbert - TransferenceAmountd - 0.4;
+                        if(TransferenceAmountd + 0.4 < currentBalance){
+                            double Transaction = currentBalance - TransferenceAmountd - 0.4;
                             this.setVisible(false);
-                            GUI_Resumen pSummary = new GUI_Resumen(RandomNumbert, Transaction);
+                            GUI_Resumen pSummary = new GUI_Resumen(indexT,Transaction);
                             pSummary.setVisible(true);
                         }else{
-                            JOptionPane.showMessageDialog(null,
-                                "Not enough balance. Try again.",
-                                "Error Message",
-                                JOptionPane.ERROR_MESSAGE);
+                            this.setVisible(false);
+                            GUI_Error pError = new GUI_Error(indexT,"Not enough balance. Try again.");
+                            pError.setVisible(true);
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null,
-                            "Not valid account. Try again.",
-                            "Error Message",
-                            JOptionPane.ERROR_MESSAGE);
+                        this.setVisible(false);
+                        GUI_Error pError = new GUI_Error(indexT,"Not valid account. Try again.");
+                        pError.setVisible(true);
                     }
                 }catch(HeadlessException e){
-                    JOptionPane.showMessageDialog(null,
-                        "Error. " + e.getMessage(),
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
+                    this.setVisible(false);
+                    GUI_Error pError = new GUI_Error(indexT,e);
+                    pError.setVisible(true);
                 }
             break;
         }
@@ -255,7 +250,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Transferencias(RandomNumbert).setVisible(true);
+                new GUI_Transferencias(indexT).setVisible(true);
             }
         });
     }

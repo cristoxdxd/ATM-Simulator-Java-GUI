@@ -1,11 +1,10 @@
 package ATM_Simulator;
 
 public class GUI_Principal extends javax.swing.JFrame {
+    static int indexP;
     
-    static double RandomNumberP;
-    
-    public GUI_Principal(double RandomNumber) {
-        RandomNumberP = RandomNumber;
+    public GUI_Principal(int index) {
+        indexP = index;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -26,9 +25,10 @@ public class GUI_Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         TransferenciasButton = new javax.swing.JButton();
         RetirosButton = new javax.swing.JButton();
-        RecargasButton = new javax.swing.JButton();
+        NewPINButton = new javax.swing.JButton();
         ConsultarButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        RecargasButton = new javax.swing.JButton();
+        EmptyButton = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -72,9 +72,9 @@ public class GUI_Principal extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(235, 162, 40));
         jPanel3.setForeground(new java.awt.Color(235, 177, 42));
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 340, 420));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 340, 390));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 390));
 
         jPanel2.setBackground(new java.awt.Color(255, 183, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,7 +88,7 @@ public class GUI_Principal extends javax.swing.JFrame {
                 TransferenciasButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(TransferenciasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 170, 50));
+        jPanel2.add(TransferenciasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 170, 50));
 
         RetirosButton.setBackground(new java.awt.Color(235, 162, 40));
         RetirosButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
@@ -99,18 +99,18 @@ public class GUI_Principal extends javax.swing.JFrame {
                 RetirosButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(RetirosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 170, 50));
+        jPanel2.add(RetirosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 170, 50));
 
-        RecargasButton.setBackground(new java.awt.Color(235, 162, 40));
-        RecargasButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        RecargasButton.setForeground(new java.awt.Color(51, 51, 51));
-        RecargasButton.setText("Recargas Mov.");
-        RecargasButton.addActionListener(new java.awt.event.ActionListener() {
+        NewPINButton.setBackground(new java.awt.Color(235, 162, 40));
+        NewPINButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NewPINButton.setForeground(new java.awt.Color(51, 51, 51));
+        NewPINButton.setText("Cambiar PIN");
+        NewPINButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RecargasButtonActionPerformed(evt);
+                NewPINButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(RecargasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 170, 50));
+        jPanel2.add(NewPINButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 170, 50));
 
         ConsultarButton.setBackground(new java.awt.Color(235, 162, 40));
         ConsultarButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
@@ -121,39 +121,70 @@ public class GUI_Principal extends javax.swing.JFrame {
                 ConsultarButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(ConsultarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 170, 50));
+        jPanel2.add(ConsultarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 170, 50));
 
-        jButton1.setText("jButton1");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
+        RecargasButton.setBackground(new java.awt.Color(235, 162, 40));
+        RecargasButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        RecargasButton.setForeground(new java.awt.Color(51, 51, 51));
+        RecargasButton.setText("Recargas Mov.");
+        RecargasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecargasButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(RecargasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, 170, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 900, 180));
+        EmptyButton.setBackground(new java.awt.Color(235, 162, 40));
+        EmptyButton.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        EmptyButton.setForeground(new java.awt.Color(51, 51, 51));
+        EmptyButton.setText("Salir");
+        EmptyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmptyButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(EmptyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 170, 50));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 900, 210));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RecargasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecargasButtonActionPerformed
+    private void NewPINButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPINButtonActionPerformed
         this.setVisible(false);
-        GUI_RecargaMovil pRecarga = new GUI_RecargaMovil(RandomNumberP);
-        pRecarga.setVisible(true);
-    }//GEN-LAST:event_RecargasButtonActionPerformed
+        GUI_PIN pPIN = new GUI_PIN(indexP);
+        pPIN.setVisible(true);
+    }//GEN-LAST:event_NewPINButtonActionPerformed
 
     private void RetirosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirosButtonActionPerformed
         this.setVisible(false);
-        GUI_Retiros pRetiros = new GUI_Retiros(RandomNumberP);
+        GUI_Retiros pRetiros = new GUI_Retiros(indexP);
         pRetiros.setVisible(true);
     }//GEN-LAST:event_RetirosButtonActionPerformed
 
     private void TransferenciasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferenciasButtonActionPerformed
         this.setVisible(false);
-        GUI_Transferencias pTransferencia = new GUI_Transferencias(RandomNumberP);
+        GUI_Transferencias pTransferencia = new GUI_Transferencias(indexP);
         pTransferencia.setVisible(true);
     }//GEN-LAST:event_TransferenciasButtonActionPerformed
 
     private void ConsultarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarButtonActionPerformed
         this.setVisible(false);
-        GUI_Consultar pConsultar = new GUI_Consultar(RandomNumberP);
+        GUI_Consultar pConsultar = new GUI_Consultar(indexP);
         pConsultar.setVisible(true);
     }//GEN-LAST:event_ConsultarButtonActionPerformed
+
+    private void RecargasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecargasButtonActionPerformed
+        this.setVisible(false);
+        GUI_RecargaMovil pRecargasM = new GUI_RecargaMovil(indexP);
+        pRecargasM.setVisible(true);
+    }//GEN-LAST:event_RecargasButtonActionPerformed
+
+    private void EmptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmptyButtonActionPerformed
+        this.setVisible(false);
+        GUI_Final pFinal = new GUI_Final();
+        pFinal.setVisible(true);
+    }//GEN-LAST:event_EmptyButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -182,7 +213,7 @@ public class GUI_Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Principal(RandomNumberP).setVisible(true);
+                new GUI_Principal(indexP).setVisible(true);
             }
         });
     }
@@ -190,11 +221,12 @@ public class GUI_Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConsultarButton;
     private javax.swing.JLabel DollarSign;
+    private javax.swing.JButton EmptyButton;
+    private javax.swing.JButton NewPINButton;
     private javax.swing.JButton RecargasButton;
     private javax.swing.JButton RetirosButton;
     private javax.swing.JButton TransferenciasButton;
     private javax.swing.JLabel bankName;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

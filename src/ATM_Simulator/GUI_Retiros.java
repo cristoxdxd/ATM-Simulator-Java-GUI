@@ -1,14 +1,15 @@
 package ATM_Simulator;
 
-import java.awt.HeadlessException;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class GUI_Retiros extends javax.swing.JFrame {
-    
-    static double RandomNumberR;
-
-    public GUI_Retiros(double RandomNumber) {
-        RandomNumberR = RandomNumber;
+    final String FileRoute = "ClientsBinary.data";
+    ArrayList<Clients> clients = FilesManager_bin.showListedFile(FileRoute);
+    static int indexR;
+    static double currentBalance;
+    public GUI_Retiros(int index) {
+        indexR = index;
+        currentBalance = (clients.get(indexR)).getBalance();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -107,29 +108,27 @@ public class GUI_Retiros extends javax.swing.JFrame {
 
     private void WithdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WithdrawButtonActionPerformed
          try{
-            double TransferenceAmounti = Integer.parseInt(WithdrawAmount.getText());
+            int TransferenceAmounti = Integer.parseInt(WithdrawAmount.getText());
             if(TransferenceAmounti < 501){
-                double Transaction = RandomNumberR - TransferenceAmounti;
+                double Transaction = currentBalance - TransferenceAmounti;
                 this.setVisible(false);
-                GUI_Resumen pSummary = new GUI_Resumen(RandomNumberR, Transaction);
+                GUI_Resumen pSummary = new GUI_Resumen(indexR,Transaction);
                 pSummary.setVisible(true);
             }else{
-                JOptionPane.showMessageDialog(null,
-                    "Not allowed withdraw over $500. Try again.",
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
-            } 
-            }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null,
-                    "Error. Only allowed integer values.\n" + e.getMessage(),
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
+                this.setVisible(false);
+                GUI_Error pError = new GUI_Error(indexR, "Not allowed withdraw over $500. Try again.");
+                pError.setVisible(true);
+            }
+        }catch(NumberFormatException e){
+            this.setVisible(false);
+            GUI_Error pError = new GUI_Error(indexR, "Only allowed integer values.\n" + e.getMessage());
+            pError.setVisible(true);
         }    
     }//GEN-LAST:event_WithdrawButtonActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         this.setVisible(false);
-        GUI_Principal pPrincipal = new GUI_Principal(RandomNumberR);
+        GUI_Principal pPrincipal = new GUI_Principal(indexR);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
@@ -160,7 +159,7 @@ public class GUI_Retiros extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Retiros(RandomNumberR).setVisible(true);
+                new GUI_Retiros(indexR).setVisible(true);
             }
         });
     }
