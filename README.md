@@ -5,8 +5,8 @@ Java Application with GUI for a bank ATM simulator
 
 * ATM simulator
 * Java Application Program with Graphical User Interface (GUI)
-* Password Validator (only allows 4 _**digits**_) 
-* Get current balance from a text data
+* Password Validator (with the respective account) 
+* Get current balance from a binary data [(legible data to test)](./Data.txt)
 - **Balance inquiry**
 - **Withdrawal** 
 - **Transfers**
