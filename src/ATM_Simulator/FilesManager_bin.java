@@ -123,6 +123,8 @@ public class FilesManager_bin {
         ArrayList<Clients> clients = new ArrayList<>();
         clients = showListedFile(FileRoute);
         int index = 0;
+        System.out.println(search);
+        System.out.println(FileRoute);
         for(int i = 0; i < clients.size(); i++){
             if((clients.get(i)).getCardCode().equals(search)){
                 return i;

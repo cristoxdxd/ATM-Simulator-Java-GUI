@@ -168,23 +168,38 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         switch(selectedBeneficiario){
             case "Banco Amigo": 
                 try{
-                    
+                    double Transaction;
+                    double Transaction2;
                     String validator = TransferenceAccount.getText();
+                    String OtherAccount = validator;
+                    System.out.println("Cuenta Destino:"+OtherAccount);
+                    String encodedOtherAccount = FilesManager_bin.encoderString(OtherAccount);
                     boolean matchvalidator = validator.matches("(\\d{6})");
                     if(matchvalidator){
-                        if(FilesManager_bin.findinFile(validator, FileRoute)){
-                            int indexTransfer = FilesManager_bin.getIndex(validator, FileRoute);
-                            double currentBalance2 = (clients.get(indexTransfer)).getBalance();
-                            double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
-                            if(TransferenceAmountd < currentBalance){
-                                double Transaction = currentBalance - TransferenceAmountd;
-                                double Transaction2 = currentBalance2 + TransferenceAmountd;
-                                this.setVisible(false);
-                                GUI_ResumenTransferencia pSummary = new GUI_ResumenTransferencia(indexT,Transaction,indexTransfer,Transaction2);
-                                pSummary.setVisible(true);
+                        if(FilesManager_bin.findinFile(OtherAccount, FileRoute)){
+                            int indexTransfer = FilesManager_bin.getIndex(encodedOtherAccount, FileRoute);
+                            if(indexT != indexTransfer){
+                                System.out.println(indexTransfer);
+                                double BalanceTransfer = (clients.get(indexTransfer)).getBalance();
+                                System.out.println(BalanceTransfer);
+                                double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
+                                if(TransferenceAmountd < currentBalance){
+                                    Transaction = currentBalance - TransferenceAmountd;
+                                    System.out.println(Transaction);
+
+                                    Transaction2 = BalanceTransfer + TransferenceAmountd;
+                                    System.out.println(Transaction2);
+                                    this.setVisible(false);
+                                    GUI_ResumenTransferencia pSummary = new GUI_ResumenTransferencia(indexT,Transaction,indexTransfer,Transaction2);
+                                    pSummary.setVisible(true);
+                                }else{
+                                    this.setVisible(false);
+                                    GUI_Error pError = new GUI_Error(indexT,"Not enough balance. Try again.");
+                                    pError.setVisible(true);
+                                }
                             }else{
                                 this.setVisible(false);
-                                GUI_Error pError = new GUI_Error(indexT,"Not enough balance. Try again.");
+                                GUI_Error pError = new GUI_Error(indexT,"Cannot transfer to yourself.");
                                 pError.setVisible(true);
                             }
                         }else{

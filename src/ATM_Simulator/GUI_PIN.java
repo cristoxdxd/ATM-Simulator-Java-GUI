@@ -23,6 +23,7 @@ public class GUI_PIN extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BackButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ChangeExitPasswordButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -36,6 +37,17 @@ public class GUI_PIN extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BackButton.setBackground(new java.awt.Color(235, 162, 40));
+        BackButton.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        BackButton.setForeground(new java.awt.Color(51, 51, 51));
+        BackButton.setText("Regresar");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 183, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -257,6 +269,12 @@ public class GUI_PIN extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ChangeBackPasswordButtonActionPerformed
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        this.setVisible(false);
+        GUI_Principal pPrincipal = new GUI_Principal(indexPIN);
+        pPrincipal.setVisible(true);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -293,6 +311,7 @@ public class GUI_PIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton ChangeBackPasswordButton;
     private javax.swing.JButton ChangeExitPasswordButton;
     private javax.swing.JLabel jLabel1;

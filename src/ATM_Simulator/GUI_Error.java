@@ -80,7 +80,6 @@ public class GUI_Error extends javax.swing.JFrame {
             }
         }, 0, 1000);
         this.setVisible(false);
-
     }
     
     /**
