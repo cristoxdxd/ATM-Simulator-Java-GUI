@@ -26,6 +26,7 @@ public class GUI_Retiros extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         WithdrawAmount = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         BackButton = new javax.swing.JButton();
 
@@ -76,8 +77,13 @@ public class GUI_Retiros extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("*Retiro máximo de $500");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 150, -1));
+        jLabel2.setText("*Solo se puede retirar valores múltiplos de 10");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 260, -1));
+
+        jLabel4.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setText("*Retiro máximo de $500");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 150, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
 
@@ -110,10 +116,16 @@ public class GUI_Retiros extends javax.swing.JFrame {
          try{
             int TransferenceAmounti = Integer.parseInt(WithdrawAmount.getText());
             if(TransferenceAmounti < 501){
-                double Transaction = currentBalance - TransferenceAmounti;
-                this.setVisible(false);
-                GUI_Resumen pSummary = new GUI_Resumen(indexR,Transaction);
-                pSummary.setVisible(true);
+                    if(TransferenceAmounti%10 == 0){
+                    double Transaction = currentBalance - TransferenceAmounti;
+                    this.setVisible(false);
+                    GUI_Resumen pSummary = new GUI_Resumen(indexR,Transaction);
+                    pSummary.setVisible(true);
+                }else{
+                    this.setVisible(false);
+                    GUI_Error pError = new GUI_Error(indexR, "Only allowed withdraw not multiple of 10. Try again.");
+                    pError.setVisible(true);
+                }
             }else{
                 this.setVisible(false);
                 GUI_Error pError = new GUI_Error(indexR, "Not allowed withdraw over $500. Try again.");
@@ -171,6 +183,7 @@ public class GUI_Retiros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

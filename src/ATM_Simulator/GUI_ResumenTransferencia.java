@@ -18,7 +18,7 @@ public class GUI_ResumenTransferencia extends javax.swing.JFrame {
         TransactionOA = Transaction2;
         initComponents();
         setLocationRelativeTo(null);
-        DecimalFormat showFormat = new DecimalFormat("#.00");
+        DecimalFormat showFormat = new DecimalFormat("###,###,###.00");
         String decodedAccount = FilesManager_bin.decoderString((clients.get(indexST)).getCardCode());
         NumberAccountLabel.setFont(new java.awt.Font("Roboto Medium", 1, 48));
         NumberAccountLabel.setText(decodedAccount);

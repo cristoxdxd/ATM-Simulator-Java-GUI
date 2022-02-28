@@ -16,7 +16,7 @@ public class GUI_Resumen extends javax.swing.JFrame {
         Transactionr = Transaction;
         initComponents();
         setLocationRelativeTo(null);
-        DecimalFormat showFormat = new DecimalFormat("#.00");
+        DecimalFormat showFormat = new DecimalFormat("###,###,###.00");
         showLastBalance.setText(showFormat.format(currentBalance));
         showLastBalance.show(true);
         showCurrentBalance.setText(showFormat.format(Transactionr));

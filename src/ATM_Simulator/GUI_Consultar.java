@@ -15,8 +15,7 @@ public class GUI_Consultar extends javax.swing.JFrame {
         currentBalance = (clients.get(indexC)).getBalance();
         initComponents();
         setLocationRelativeTo(null);
-        //System.out.println(RandomNumberc);
-        DecimalFormat showFormat = new DecimalFormat("#.00");
+        DecimalFormat showFormat = new DecimalFormat("###,###,###.00");
         InformationTextArea.setText((clients.get(indexC)).getFullName() + "\n");
         InformationTextArea.append("Saldo actual: " + showFormat.format(currentBalance));
         InformationTextArea.show(true);
