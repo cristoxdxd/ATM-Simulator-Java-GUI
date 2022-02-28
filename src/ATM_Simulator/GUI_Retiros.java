@@ -116,7 +116,7 @@ public class GUI_Retiros extends javax.swing.JFrame {
          try{
             int TransferenceAmounti = Integer.parseInt(WithdrawAmount.getText());
             if(TransferenceAmounti < 501){
-                    if(TransferenceAmounti%10 == 0){
+                if(TransferenceAmounti%10 == 0){
                     double Transaction = currentBalance - TransferenceAmounti;
                     this.setVisible(false);
                     GUI_Resumen pSummary = new GUI_Resumen(indexR,Transaction);

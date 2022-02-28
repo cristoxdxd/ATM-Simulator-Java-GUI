@@ -8,16 +8,18 @@ public class GUI_Consultar extends javax.swing.JFrame {
     final String FileRoute = "ClientsBinary.data";
     ArrayList<Clients> clients = FilesManager_bin.showListedFile(FileRoute);
     static int indexC;
-    static double currentBalance;
+    static double currentBalanceUSD;
+    static double currentBalanceEUR;
 
     public GUI_Consultar(int index) {
         indexC = index;
-        currentBalance = (clients.get(indexC)).getBalance();
+        currentBalanceUSD = (clients.get(indexC)).getBalance();
+        currentBalanceEUR = currentBalanceUSD * 0.891559;
         initComponents();
         setLocationRelativeTo(null);
         DecimalFormat showFormat = new DecimalFormat("###,###,###.00");
         InformationTextArea.setText((clients.get(indexC)).getFullName() + "\n");
-        InformationTextArea.append("Saldo actual: " + showFormat.format(currentBalance));
+        InformationTextArea.append("Saldo actual: \nUSD -> " + showFormat.format(currentBalanceUSD)+"\nEUR -> " + showFormat.format(currentBalanceEUR));
         InformationTextArea.show(true);
     }
 
@@ -91,7 +93,7 @@ public class GUI_Consultar extends javax.swing.JFrame {
         InformationTextArea.setRows(4);
         jScrollPane1.setViewportView(InformationTextArea);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 330, 50));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 330, 110));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 

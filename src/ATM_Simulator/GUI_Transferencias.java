@@ -36,6 +36,8 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         TransferenceAccount = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -86,13 +88,13 @@ public class GUI_Transferencias extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("*Una vez seleccionado el beneficiario");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        jLabel5.setText(" $00.40 de comisión");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("se efectuará la transferencia.");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto Black", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -146,6 +148,16 @@ public class GUI_Transferencias extends javax.swing.JFrame {
         jLabel7.setText("Verifique ingresar los 6 digitos");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("*Una vez seleccionado el beneficiario");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Roboto Slab", 2, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("*Transferencia a otros bancos cobrará");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 600));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
@@ -172,7 +184,7 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                     double Transaction2;
                     String validator = TransferenceAccount.getText();
                     String OtherAccount = validator;
-                    System.out.println("Cuenta Destino:"+OtherAccount);
+                    System.out.println("Cuenta Destino:" + OtherAccount);
                     String encodedOtherAccount = FilesManager_bin.encoderString(OtherAccount);
                     boolean matchvalidator = validator.matches("(\\d{6})");
                     if(matchvalidator){
@@ -224,7 +236,6 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                     boolean matchvalidator = validator.matches("(\\d{6})");
                     if(matchvalidator){
                         double TransferenceAmountd = Double.parseDouble(TransferenceAmount.getText());
-
                         if(TransferenceAmountd + 0.4 < currentBalance){
                             double Transaction = currentBalance - TransferenceAmountd - 0.4;
                             this.setVisible(false);
@@ -294,6 +305,8 @@ public class GUI_Transferencias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
