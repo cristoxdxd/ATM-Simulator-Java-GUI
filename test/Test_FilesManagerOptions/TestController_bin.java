@@ -28,7 +28,7 @@ public class TestController_bin {
                     ArrayList<Clients> students2 = new ArrayList<>();
                     students2 = FilesManager_bin.showListedFile(FileRoute);
                     System.out.printf("\n%-6s%-12s%-40s%-20s%-30s%-20s","Nro.","CardCode","Fullname", "Password", "Balance", "Birthday\n");
-                    for(int i = 1; i < students2.size(); i++){
+                    for(int i = 1; i < students2.size()+1; i++){
                         System.out.println((students2.get(i-1)).formatRegister(i));
                     }
                     break;

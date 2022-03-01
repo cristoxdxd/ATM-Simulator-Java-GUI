@@ -235,9 +235,9 @@ public class GUI_RecargaMovil extends javax.swing.JFrame{
                     pError.setVisible(true);
                 }
             }catch(HeadlessException e){
-                this.setVisible(false);
+                /*this.setVisible(false);
                 GUI_Error pError = new GUI_Error(indexRM, e);
-                pError.setVisible(true);
+                pError.setVisible(true);*/
             }
         }else{
             this.setVisible(false);

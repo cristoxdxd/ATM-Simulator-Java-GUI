@@ -225,9 +225,9 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                         pError.setVisible(true);
                     }
                 }catch(HeadlessException e){
-                    this.setVisible(false);
+                    /*this.setVisible(false);
                     GUI_Error pError = new GUI_Error(indexT,e);
-                    pError.setVisible(true);
+                    pError.setVisible(true);*/
                 }
             break;
             case "Banco Vecino": case "Banco Lejano": case "Banco Viral":
@@ -252,9 +252,9 @@ public class GUI_Transferencias extends javax.swing.JFrame {
                         pError.setVisible(true);
                     }
                 }catch(HeadlessException e){
-                    this.setVisible(false);
+                    /*this.setVisible(false);
                     GUI_Error pError = new GUI_Error(indexT,e);
-                    pError.setVisible(true);
+                    pError.setVisible(true);*/
                 }
             break;
         }

@@ -71,6 +71,11 @@ public class GUI_Retiros extends javax.swing.JFrame {
         WithdrawAmount.setColumns(5);
         WithdrawAmount.setFont(new java.awt.Font("Roboto Black", 1, 36)); // NOI18N
         WithdrawAmount.setRows(1);
+        WithdrawAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                WithdrawAmountKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(WithdrawAmount);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 250, 70));
@@ -132,10 +137,10 @@ public class GUI_Retiros extends javax.swing.JFrame {
                 pError.setVisible(true);
             }
         }catch(NumberFormatException e){
-            this.setVisible(false);
+            /*this.setVisible(false);
             GUI_Error pError = new GUI_Error(indexR, "Only allowed integer values.\n" + e.getMessage());
-            pError.setVisible(true);
-        }    
+            pError.setVisible(true);*/
+        }
     }//GEN-LAST:event_WithdrawButtonActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
@@ -143,6 +148,11 @@ public class GUI_Retiros extends javax.swing.JFrame {
         GUI_Principal pPrincipal = new GUI_Principal(indexR);
         pPrincipal.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void WithdrawAmountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WithdrawAmountKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_WithdrawAmountKeyTyped
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
